@@ -1,0 +1,57 @@
+Ask away. — CatchUp | What Did I Miss?
+Analysis method: on-device JavaScript rules (no cloud AI)
+Analyzed: 10/9/2026, 2:55:13 PM
+
+SUMMARY
+Maya: Thanks, Leo. @Jordan, can you confirm the final user count before noon? Jordan: Confirmed — we have 1,240 active users. I’ll send the source numbers in a few minutes. Priya: The team agreed to move the launch announcement to Tuesday so support has time to prepare.
+
+IMPORTANT MESSAGES
+[High] Thanks, Leo. @Jordan, can you confirm the final user count before noon?
+  Source: Maya: Thanks, Leo. @Jordan, can you confirm the final user count before noon?
+[Medium] Confirmed — we have 1,240 active users. I’ll send the source numbers in a few minutes.
+  Source: Jordan: Confirmed — we have 1,240 active users. I’ll send the source numbers in a few minutes.
+[Medium] The team agreed to move the launch announcement to Tuesday so support has time to prepare.
+  Source: Priya: The team agreed to move the launch announcement to Tuesday so support has time to prepare.
+[Medium] Agreed. Priya will coordinate the announcement with Support.
+  Source: Maya: Agreed. Priya will coordinate the announcement with Support.
+[Medium] Should we include the export in tomorrow’s demo, or wait until the issue is resolved?
+  Source: Jordan: Should we include the export in tomorrow’s demo, or wait until the issue is resolved?
+
+ACTION ITEMS
+- Thanks, Leo. @Jordan, can you confirm the final user count before noon?
+  Owner: Jordan | Deadline: before noon
+  Source: Maya: Thanks, Leo. @Jordan, can you confirm the final user count before noon?
+- Agreed. Priya will coordinate the announcement with Support.
+  Owner: Priya | Deadline: Not specified
+  Source: Maya: Agreed. Priya will coordinate the announcement with Support.
+
+MENTIONS
+- Maya: Thanks, Leo. @Jordan, can you confirm the final user count before noon?
+  Source: Maya: Thanks, Leo. @Jordan, can you confirm the final user count before noon?
+
+CONFIRMED DECISIONS
+- Priya: The team agreed to move the launch announcement to Tuesday so support has time to prepare.
+  Source: Priya: The team agreed to move the launch announcement to Tuesday so support has time to prepare.
+- Maya: Agreed. Priya will coordinate the announcement with Support.
+  Source: Maya: Agreed. Priya will coordinate the announcement with Support.
+
+UNRESOLVED ISSUES
+- Maya: The client review is tomorrow at 10. The slides still need the updated retention chart.
+  Source: Maya: The client review is tomorrow at 10. The slides still need the updated retention chart.
+- Maya: Thanks, Leo. @Jordan, can you confirm the final user count before noon?
+  Source: Maya: Thanks, Leo. @Jordan, can you confirm the final user count before noon?
+- Leo: The export is still failing for accounts over 10,000 rows. I’m investigating, but we don’t have a fix yet.
+  Source: Leo: The export is still failing for accounts over 10,000 rows. I’m investigating, but we don’t have a fix yet.
+- Jordan: Should we include the export in tomorrow’s demo, or wait until the issue is resolved?
+  Source: Jordan: Should we include the export in tomorrow’s demo, or wait until the issue is resolved?
+
+ORIGINAL CONVERSATION
+Maya: The client review is tomorrow at 10. The slides still need the updated retention chart.
+Leo: I can update the chart and send the revised deck by 4 PM today.
+Maya: Thanks, Leo. @Jordan, can you confirm the final user count before noon?
+Jordan: Confirmed — we have 1,240 active users. I’ll send the source numbers in a few minutes.
+Priya: The team agreed to move the launch announcement to Tuesday so support has time to prepare.
+Maya: Agreed. Priya will coordinate the announcement with Support.
+Leo: The export is still failing for accounts over 10,000 rows. I’m investigating, but we don’t have a fix yet.
+Jordan: Should we include the export in tomorrow’s demo, or wait until the issue is resolved?
+Priya: Let’s leave it out of the demo until we confirm the fix.

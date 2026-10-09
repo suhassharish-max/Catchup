@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f6fa">
+    <meta name="description" content="CatchUp privately analyzes conversations on your device.">
+    <title>Ask away. — CatchUp</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="CatchUp home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span>catchup<span class="brand-period">.</span></span>
+        </a>
+        <div class="topbar-right">
+          <span class="local-badge"><span class="status-dot"></span> Private by design</span>
+          <span class="avatar" aria-label="Your workspace">Y</span>
+        </div>
+      </header>
+
+      <main>
+        <section class="intro">
+          <div class="eyebrow"><span class="eyebrow-line"></span> YOUR PRIVATE CHAT ASSISTANT</div>
+          <h1>Ask away<span>.</span></h1>
+          <p>Paste a conversation, get a local AI catch-up, and find it here later.</p>
+        </section>
+
+        <div class="app-main">
+          <nav class="app-tabs" role="tablist" aria-label="CatchUp workflow">
+            <button class="app-tab active" id="pasteTab" type="button" role="tab" aria-selected="true" aria-controls="pasteTabPanel" data-tab="paste"><span class="tab-number">01</span> Paste conversation</button>
+            <button class="app-tab" id="analysisTab" type="button" role="tab" aria-selected="false" aria-controls="analysisTabPanel" data-tab="analysis"><span class="tab-number">02</span> AI analysis</button>
+            <button class="app-tab" id="historyTab" type="button" role="tab" aria-selected="false" aria-controls="historyTabPanel" data-tab="history"><span class="tab-number">03</span> History <span class="history-count" id="historyCount">0</span></button>
+          </nav>
+
+          <div class="tab-panel active" id="pasteTabPanel" role="tabpanel" aria-labelledby="pasteTab" data-panel="paste">
+            <section class="dashboard paste-dashboard" aria-labelledby="dashboardTitle">
+              <div class="dashboard-intro">
+                <div>
+                  <div class="step-label"><span>STEP 1</span> &nbsp; ADD A CONVERSATION</div>
+                  <h2 id="dashboardTitle">What did I miss?</h2>
+                  <p>Paste an unread team chat. CatchUp will prioritize urgent details, decisions, tasks, and deadlines.</p>
+                </div>
+                <div class="paste-actions">
+                  <button class="clear-conversation-button" id="clearConversationButton" type="button">Clear input</button>
+                  <button class="export-button" id="newConversationButton" type="button">＋ &nbsp; New conversation</button>
+                </div>
+              </div>
+              <section class="input-panel" aria-labelledby="conversationHeading">
+                <div class="panel-heading">
+                  <div><div class="step-label"><span>YOUR CONVERSATION</span></div><h2 id="conversationHeading">Paste your chat</h2></div>
+                </div>
+                <div class="textarea-wrap">
+                  <label class="sr-only" for="conversationInput">Paste a conversation to analyze</label>
+                  <textarea id="conversationInput" maxlength="100000" placeholder="Paste the conversation you want to catch up on."></textarea>
+                  <div class="input-footer">
+                    <span>Saved privately in this browser</span>
+                    <span id="conversationCharCount">0 / 100,000</span>
+                  </div>
+                </div>
+                <div class="analyzer-options">
+                  <label for="userNameInput">Find my tasks</label>
+                  <input id="userNameInput" type="text" maxlength="60" placeholder="Your name (optional)" autocomplete="off">
+                </div>
+                <div class="input-actions">
+                  <button class="analyze-button" id="analyzeButton" type="button">Analyze with local AI <span aria-hidden="true">→</span></button>
+                </div>
+                <p class="analysis-error" id="analysisError" role="alert" hidden></p>
+                <div class="privacy-note">
+                  <span class="lock-icon" aria-hidden="true">◈</span>
+                  <span><strong>Your chat stays on this device.</strong> A browser AI model downloads the first time you analyze; your conversation is never uploaded.</span>
+                </div>
+              </section>
+            </section>
+          </div>
+
+          <div class="tab-panel" id="analysisTabPanel" role="tabpanel" aria-labelledby="analysisTab" data-panel="analysis" hidden>
+            <section class="results-panel analysis-results" aria-labelledby="resultsHeading" aria-live="polite">
+              <div class="results-heading">
+                <div><div class="step-label"><span>STEP 2</span> &nbsp; YOUR ON-DEVICE AI BRIEF</div><h2 id="resultsHeading">What you missed</h2></div>
+                <div class="analysis-heading-actions">
+                  <span class="result-caption" id="resultCaption">Paste a conversation to get started</span>
+                  <button class="export-button" id="exportButton" type="button" disabled>↓ &nbsp; Export .txt</button>
+                </div>
+              </div>
+              <div id="resultsContent">
+                <div class="empty-state">
+                  <div class="empty-illustration" aria-hidden="true">✳</div>
+                  <h3>Your AI catch-up will appear here</h3>
+                  <p>Paste a conversation in the first tab, then analyze it with the private browser AI.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="chat-panel followup-panel" aria-label="Ask follow-up questions about this conversation">
+              <div class="chat-heading">
+                <div class="chat-avatar" aria-hidden="true"><span class="brand-mark"><span></span><span></span><span></span></span></div>
+                <div><h2>Ask a follow-up</h2><span class="chat-status"><span class="status-dot checking" id="modelStatusDot"></span><span id="modelStatusText">On-device AI · not loaded</span></span></div>
+                <span class="model-choice">Qwen2.5 0.5B · runs in your browser</span>
+                <button class="text-button chat-clear" id="clearButton" type="button" title="Clear follow-up messages">Clear chat</button>
+              </div>
+              <div class="model-setup" id="modelSetup">
+                <strong>Private, on-device AI</strong>
+                <p id="modelSetupDescription">The browser downloads Qwen2.5 0.5B the first time you analyze. Model files come from Hugging Face; your pasted conversation and questions stay on this device.</p>
+              </div>
+              <div class="chat-thread" id="chatThread" aria-live="polite" aria-relevant="additions text">
+                <div class="welcome-message">
+                  <div class="welcome-icon" aria-hidden="true">✳</div>
+                  <h3>Want to know more?</h3>
+                  <p>Analyze a conversation, then ask a follow-up. The AI uses your pasted chat as context.</p>
+                </div>
+              </div>
+              <form class="chat-composer" id="chatForm">
+                <label class="sr-only" for="messageInput">Ask a question about the conversation</label>
+                <textarea id="messageInput" rows="2" placeholder="Ask about this conversation…" maxlength="30000"></textarea>
+                <div class="composer-footer">
+                  <span class="composer-hint">Enter to send · Shift+Enter for a new line</span>
+                  <span class="composer-actions"><span id="charCount">0 / 30,000</span><button class="send-button" id="sendButton" type="submit" aria-label="Send message" title="Send message">↑</button></span>
+                </div>
+              </form>
+              <p class="analysis-error chat-error" id="chatError" role="alert" hidden></p>
+              <div class="privacy-note chat-privacy"><span class="lock-icon" aria-hidden="true">◈</span><span><strong>Local and private.</strong> AI runs in this browser; your chat is saved only in this browser. Clear all history to erase it.</span></div>
+            </section>
+          </div>
+
+          <div class="tab-panel history-tab-panel" id="historyTabPanel" role="tabpanel" aria-labelledby="historyTab" data-panel="history" hidden>
+            <section class="history-page">
+              <div class="history-page-heading">
+                <div><div class="step-label"><span>STEP 3</span> &nbsp; YOUR LIBRARY</div><h2>Analyzed conversations</h2><p>Each successful analysis is saved automatically on this device.</p></div>
+                <button class="clear-history-button" id="clearHistoryButton" type="button">Clear all history</button>
+              </div>
+              <p class="storage-notice" id="storageNotice" role="status" hidden></p>
+              <div class="history-grid" id="historyList" aria-live="polite"></div>
+            </section>
+          </div>
+        </div>
+
+        <footer class="page-footer">
+          <span>CatchUp · private conversation assistant</span>
+          <span><span class="footer-spark">✳</span> On-device AI · conversation stays in this browser</span>
+        </footer>
+      </main>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
